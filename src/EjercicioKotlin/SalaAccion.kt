@@ -1,4 +1,7 @@
-class SalaAccion {
+package EjercicioKotlin
+
+class SalaAccion :Salas(){
+
     private val flechasSuelo = 10
 
     fun SalaAccion(poderMaligno: Int) {
@@ -12,7 +15,6 @@ class SalaAccion {
 
     /**
      * @param legolas
-     * @param flechas
      * @param sala
      * @return Si viven(true) o si mueren(false)
      */

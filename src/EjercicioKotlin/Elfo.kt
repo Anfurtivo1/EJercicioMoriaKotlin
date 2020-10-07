@@ -1,3 +1,5 @@
+package EjercicioKotlin
+
 class Elfo : Personajes(){
     private var flechas : Int =20
 
@@ -5,7 +7,7 @@ class Elfo : Personajes(){
         return flechas
     }
 
-    fun recargarCarcaj():Unit{
+    fun recargarCarcaj(flechas : Int):Unit{
         this.flechas=flechas
     }
 

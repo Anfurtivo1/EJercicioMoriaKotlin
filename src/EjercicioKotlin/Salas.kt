@@ -1,4 +1,6 @@
-class Salas {
+package EjercicioKotlin
+
+open class Salas {
     private var poderMaligno = 0
     private var numeroEnemigos = 10
     var contador = 0
@@ -106,6 +108,6 @@ class Salas {
 
 
     override fun toString(): String {
-        return "Salas{poderMaligno=$poderMaligno, numeroEnemigos=$numeroEnemigos}"
+        return "Salas{" + "poderMaligno=" + poderMaligno + ", numeroEnemigos=" + numeroEnemigos + '}';
     }
 }

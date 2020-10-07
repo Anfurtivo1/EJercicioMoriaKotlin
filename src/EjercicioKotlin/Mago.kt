@@ -1,3 +1,5 @@
+package EjercicioKotlin
+
 class Mago : Personajes(){
     private var poderVara :Int = 30
 
