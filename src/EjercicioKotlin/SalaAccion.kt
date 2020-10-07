@@ -1,5 +1,8 @@
 package EjercicioKotlin
 
+/**
+ * Clase Sala Accion
+ */
 class SalaAccion :Salas(){
 
     private val flechasSuelo = 10
@@ -8,6 +11,9 @@ class SalaAccion :Salas(){
         //super(poderMaligno)
     }
 
+    /**
+     * Se obtienen las flechas que tiene la sala
+     */
     fun getFlechasSuelo(): Int {
         return flechasSuelo
     }

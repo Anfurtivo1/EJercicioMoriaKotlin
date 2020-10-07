@@ -3,7 +3,9 @@ import java.io.DataOutputStream
 import java.io.FileOutputStream
 import java.util.*
 
-
+/**
+ * Metodo Main
+ */
 fun main(){
         var gandalf = Mago()
         var legolas = Elfo()
@@ -27,6 +29,7 @@ fun main(){
         legolas.estado=true
 
     for (i in 1..36){
+        //Primero se rellena moria de salas
         poderMaligno = Math.floor(Math.random() * 40).toInt()
         if(contador<=20){
             sala= Salas()
@@ -48,62 +51,62 @@ fun main(){
             salaA.setTiposala(TipoSala.ACCION)
             moria[i]=salaA
         }
-        println( moria[i]);
-        pila.add(moria[i])
-        contador++
-        if (moria[i]!!.getTiposala()!!.equals(TipoSala.MAGICA)) {
+        //println( moria[i]);
+        pila.add(moria[i])//Se añade a la cola
+        contador++//Se suma para saber luego la cantidad de salas que se han recorrido
+        if (moria[i]!!.getTiposala()!!.equals(TipoSala.MAGICA)) {//Si la sala es de tipo magica, las recorre gandalf
             println("")
             sumarPoderVara = Math.floor(Math.random() * 10).toInt()
             gandalf.recargarVara(sumarPoderVara + gandalf.PoderVara())
             pruebaMagica = moria[i]!!.comprobarPeligroMagico(gandalf.PoderVara(), moria[i]!!)
-            if (pruebaMagica && gandalf.estado) {
+            if (pruebaMagica && gandalf.estado) {//Si la supera se hace esto
                 println("Gandalf ha realizado una sala con peligro magico y la ha superado")
                 pruebasSuperadas++
-            } else {
+            } else {//Si muere, se hace esto
                 println("Gandalf ha muerto")
                 gandalf.estado=false
                 pruebasNoSuperadas++
                 break
             }
-            pila.pop()
+            pila.pop()//Se quita de la cola
         }
-        if (moria[i]!!.getTiposala()!!.equals(TipoSala.HABILIDAD)) {
+        if (moria[i]!!.getTiposala()!!.equals(TipoSala.HABILIDAD)) {//Si la sala es de tipo habilidad, las recorre frodo
             println("")
             pruebaHabilidad = moria[i]!!.combate(frodo)
-            if (pruebaHabilidad && frodo.estado) {
+            if (pruebaHabilidad && frodo.estado) {//Si la supera, hace esto
                 println("Frodo ha realizado una sala con peligro Habilidad y la ha superado")
                 pruebasSuperadas++
-            } else {
+            } else {//Si no hace esto
                 println("Frodo ha muerto")
                 frodo.estado=false
                 pruebasNoSuperadas++
                 break
             }
-            pila.pop()
+            pila.pop()//Se quita de la cola
         }
 
-        if (moria[i]!!.getTiposala()!!.equals(TipoSala.ACCION)) {
+        if (moria[i]!!.getTiposala()!!.equals(TipoSala.ACCION)) {//Si la sala es de tipo accion, las recorre legolas
             println("")
             var aux = moria[i] as SalaAccion
             pruebaAccion = aux.matarEnemigos(aux, legolas)
-            if (pruebaAccion && legolas.estado) {
+            if (pruebaAccion && legolas.estado) {//Si la supera se hace esto
                 println("Legolas ha realizado una sala con peligro Accion y la ha superado")
                 pruebasSuperadas++
                 legolas.recargarCarcaj(aux.getFlechasSuelo() + legolas.getCarcaj())
-            } else {
+            } else {//Si no, esto
                 println("Legolas ha muerto")
                 legolas.estado=false
                 pruebasNoSuperadas++
                 break
             }
-            pila.pop()
+            pila.pop()//Se quita de la cola
         }
     }
 
 
 
 
-    if (pruebasNoSuperadas > 0) {
+    if (pruebasNoSuperadas > 0) {//Si no se ha superado alguna prueba
         try {
             salida = DataOutputStream(FileOutputStream("moria.txt", true))
             pruebasNoSuperadas = 36 - pruebasSuperadas
@@ -123,7 +126,7 @@ fun main(){
         }
     }
 
-    if (pruebasNoSuperadas == 0) {
+    if (pruebasNoSuperadas == 0) {//Si se han superado todas las pruebas
         try {
             salida = DataOutputStream(FileOutputStream("moria.txt", true))
             salida.writeChar('\n'.toInt())

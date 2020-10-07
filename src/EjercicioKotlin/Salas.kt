@@ -1,5 +1,8 @@
 package EjercicioKotlin
 
+/**
+ * Clase Salas
+ */
 open class Salas {
     private var poderMaligno = 0
     private var numeroEnemigos = 10
@@ -10,27 +13,44 @@ open class Salas {
         this.poderMaligno = poderMaligno
     }
 
-
+    /**
+     * Se obtiene el poder maligno
+     */
     fun getPoderMaligno(): Int {
         return poderMaligno
     }
 
+    /**
+     * Se pone un poder maligno
+     */
     fun setPoderMaligno(poderMaligno: Int) {
         this.poderMaligno = poderMaligno
     }
 
+    /**
+     * Se recibe la cantidad de enemigos que hay
+     */
     fun getNumeroEnemigos(): Int {
         return numeroEnemigos
     }
 
+    /**
+     * Se añade una cantidad de enemigos
+     */
     fun setNumeroEnemigos(numeroEnemigos: Int) {
         this.numeroEnemigos = numeroEnemigos
     }
 
+    /**
+     * Se obtiene el tipo de sala que es
+     */
     fun getTiposala(): TipoSala? {
         return tiposala
     }
 
+    /**
+     * Se añade un tipo a la sala
+     */
     fun setTiposala(tiposala: TipoSala?) {
         this.tiposala = tiposala
     }
